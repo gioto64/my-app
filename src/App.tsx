@@ -35,7 +35,7 @@ function App() {
         areas={layout}
         columns={['1fr', '3fr']}
         rows={['1fr', '8fr', '1fr']}
-        height="100vh"
+        height="96vh"
         gap="size-100">
         <AppHeader />
         <LeftRail setTabId={setTabId} isHidden = {!isLeftRailOpen}/>
