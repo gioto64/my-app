@@ -1,8 +1,7 @@
 import { Button, Flex, Item, TabList, TabPanels, Tabs, View, Text } from "@adobe/react-spectrum";
 import React from "react";
 import { useState } from "react";
-import { TripleGripper } from "@adobe/react-spectrum-ui"
-import { Pin } from "@adobe/react-spectrum-workflow"
+
 interface TabItem {
   id: number,
   name: string,
@@ -10,6 +9,7 @@ interface TabItem {
 
 interface LeftRailProps {
   isHidden: boolean,
+  setTabId:  React.Dispatch<React.SetStateAction<number>>,
 }
 
 function LeftRail(props : LeftRailProps) {
@@ -27,9 +27,7 @@ function LeftRail(props : LeftRailProps) {
       name: 'Empire', 
     }
   ];
-  
-  const [tabId, setTabId] = React.useState(1);
-  
+    
   return (
     <View 
       backgroundColor="gray-100" 
@@ -37,12 +35,11 @@ function LeftRail(props : LeftRailProps) {
       isHidden={props.isHidden}
       >
  
-      <p>Current tab id: {tabId}</p>
       <Tabs
         orientation="vertical"
         aria-label="History of Ancient Rome"
         items={tabs}
-        onSelectionChange={(key: number) => {setTabId(key)}}
+        onSelectionChange={(key: number) => {props.setTabId(key)}}
       >
         <TabList>
           {(item: TabItem) => (

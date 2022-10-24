@@ -8,6 +8,7 @@ import LeftRail from './components/LeftRail';
 import Hamburger from 'hamburger-react'
 
 function App() {
+  const [tabId, setTabId] = useState(1);
   const [layout, setLayout] = useState([
     'header  header',
     'content content',
@@ -37,8 +38,8 @@ function App() {
         height="100vh"
         gap="size-100">
         <AppHeader />
-        <LeftRail isHidden = {!isLeftRailOpen}/>
-        <AppBody />
+        <LeftRail setTabId={setTabId} isHidden = {!isLeftRailOpen}/>
+        <AppBody tabId={tabId} />
         <AppFooter />
       </Grid>
     </Provider>

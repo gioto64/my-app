@@ -1,9 +1,16 @@
 
 import { View } from "@adobe/react-spectrum";
 
-function AppBody() {
+interface AppBodyProps {
+  tabId,
+}
+
+function AppBody(props: AppBodyProps) {
+  const color = props.tabId === 1 ? "purple-600" :
+                props.tabId === 2 ? "orange-600" :
+                "green-600"
   return (
-    <View backgroundColor="purple-600" gridArea="content" />
+    <View backgroundColor={color} gridArea="content" />
   );
 }
 
