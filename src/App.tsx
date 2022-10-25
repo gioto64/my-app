@@ -6,6 +6,7 @@ import AppFooter from './components/AppFooter';
 import AppHeader from './components/AppHeader';
 import LeftRail from './components/LeftRail';
 import Hamburger from 'hamburger-react'
+import { LoginPage } from './components/pages/LoginPage';
 
 function App() {
   const [tabId, setTabId] = useState(1);
@@ -15,33 +16,10 @@ function App() {
     'footer  footer']);
   
   const [isLeftRailOpen, setLeftRail] = useState(false);
+
   return (
     <Provider theme={defaultTheme} flex = {true}>
-      <Hamburger onToggle={() => {
-        if (isLeftRailOpen) {
-          setLayout([
-            'header header',
-            'content content',
-            'footer footer']);
-        } else {
-          setLayout([
-            'sidebar  header',
-            'sidebar content',
-            'sidebar  footer']);
-        }
-        setLeftRail(!isLeftRailOpen);
-      }}/>
-      <Grid
-        areas={layout}
-        columns={['1fr', '3fr']}
-        rows={['1fr', '8fr', '1fr']}
-        height="96vh"
-        gap="size-100">
-        <AppHeader />
-        <LeftRail setTabId={setTabId} isHidden = {!isLeftRailOpen}/>
-        <AppBody tabId={tabId} />
-        <AppFooter />
-      </Grid>
+      <LoginPage />
     </Provider>
   );
 }
