@@ -10,7 +10,7 @@ import {
   Heading,
   TextField,
 } from "@adobe/react-spectrum";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "../../App.css";
 
