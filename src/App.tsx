@@ -1,12 +1,5 @@
-import {Text, Button, defaultTheme, Flex, Grid, Header, Provider, View} from '@adobe/react-spectrum';
 import { useState } from 'react';
-import { TripleGripper } from "@adobe/react-spectrum-ui"
-import AppBody from './components/AppBody';
-import AppFooter from './components/AppFooter';
-import AppHeader from './components/AppHeader';
-import LeftRail from './components/LeftRail';
-import Hamburger from 'hamburger-react'
-import { LoginPage } from './components/pages/LoginPage';
+import { redirect, Route } from 'react-router-dom';
 
 function App() {
   const [tabId, setTabId] = useState(1);
@@ -16,12 +9,9 @@ function App() {
     'footer  footer']);
   
   const [isLeftRailOpen, setLeftRail] = useState(false);
+  // Create route in index.tsx or using browser router
+  // are globally seen paths with browser router
 
-  return (
-    <Provider theme={defaultTheme} flex = {true}>
-      <LoginPage />
-    </Provider>
-  );
+  return <h2> Root component </h2>
 }
-
 export default App;

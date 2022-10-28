@@ -4,13 +4,32 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { LoginPage } from './components/pages/LoginPage';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { SignUpPage } from './components/pages/SignUpPage';
+import { Provider, defaultTheme } from '@adobe/react-spectrum';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <App />
+    },
+    {
+      path: '/login',
+      element: <LoginPage/>
+    },
+    {
+      path: '/signup',
+      element: <SignUpPage />
+    }
+  ])
 root.render(
   <React.StrictMode>
-    <App />
+    <Provider theme={defaultTheme} colorScheme={'light'}>
+    <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
 
