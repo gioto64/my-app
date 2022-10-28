@@ -1,11 +1,9 @@
-import {Text, Button, defaultTheme, Flex, Grid, Header, Provider, View} from '@adobe/react-spectrum';
+import {Text, Button, defaultTheme, Flex, Grid, Header, Provider, View, Divider} from '@adobe/react-spectrum';
 import { useState } from 'react';
-import { TripleGripper } from "@adobe/react-spectrum-ui"
 import AppBody from './components/AppBody';
 import AppFooter from './components/AppFooter';
 import AppHeader from './components/AppHeader';
 import LeftRail from './components/LeftRail';
-import Hamburger from 'hamburger-react'
 
 function App() {
   const [tabId, setTabId] = useState(1);
@@ -13,34 +11,43 @@ function App() {
     'header  header',
     'content content',
     'footer  footer']);
+  const [isMenuOpen, setMenu] = useState(false);
+  const toggleMenu = () => {
+    if (isMenuOpen) {
+      setLayout([
+        'header header',
+        'content content',
+        'footer footer']);
+    } else {
+      setLayout([
+        'header  header',
+        'sidebar content',
+        'footer  footer']);
+    }
+    setMenu(!isMenuOpen);
+  }
   
-  const [isLeftRailOpen, setLeftRail] = useState(false);
   return (
     <Provider theme={defaultTheme} flex = {true}>
-      <Hamburger onToggle={() => {
-        if (isLeftRailOpen) {
-          setLayout([
-            'header header',
-            'content content',
-            'footer footer']);
-        } else {
-          setLayout([
-            'sidebar  header',
-            'sidebar content',
-            'sidebar  footer']);
-        }
-        setLeftRail(!isLeftRailOpen);
-      }}/>
       <Grid
         areas={layout}
-        columns={['1fr', '3fr']}
-        rows={['1fr', '8fr', '1fr']}
-        height="96vh"
-        gap="size-100">
-        <AppHeader />
-        <LeftRail setTabId={setTabId} isHidden = {!isLeftRailOpen}/>
+        columns={['1fr', '7fr']}
+        rows={['1fr', '15fr', '1fr']}
+        height="100vh"
+        >
+        <Flex gridArea="header" flex={true} direction="column">
+          <AppHeader toggleMenu = {toggleMenu}/>
+          <Divider />
+        </Flex>
+        <Flex gridArea="sidebar" flex={true}> 
+          <LeftRail setTabId={setTabId} isHidden={!isMenuOpen}/>
+          <Divider isHidden={!isMenuOpen} orientation="vertical"/>
+        </Flex>
         <AppBody tabId={tabId} />
-        <AppFooter />
+        <Flex gridArea="footer" flex={true} direction="column">
+          <Divider />
+          <AppFooter />
+        </Flex>
       </Grid>
     </Provider>
   );
