@@ -1,9 +1,11 @@
 import {
+  AlertDialog,
   Button,
   ButtonGroup,
   Checkbox,
   Content,
   ContextualHelp,
+  DialogTrigger,
   Flex,
   Footer,
   Form,
@@ -11,10 +13,17 @@ import {
   TextField,
 } from "@adobe/react-spectrum";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 import "../../App.css";
+import { postMethod } from "../crud";
+import { API_URL } from "./constants";
 
 export const LoginPage = () => {
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+
+  const [successLogin, setSuccessLogin] = useState(true);
 
   const navigate = useNavigate();
 
@@ -34,7 +43,7 @@ export const LoginPage = () => {
           justifySelf="center"
         >
           <h2> UrziSoft Future Project Name </h2>
-          <TextField label="Email" />
+          <TextField label="Email" onChange={(value) => setUserEmail(value)} />
           <TextField
             label="Password"
             type="password"
@@ -47,12 +56,50 @@ export const LoginPage = () => {
                 </Content>
               </ContextualHelp>
             }
+            onChange={(value) => setUserPassword(value)}
           />
           <Checkbox>Remember me</Checkbox>
           <ButtonGroup align="center" top={"size-300"}>
-            <Button variant={"primary"} UNSAFE_className="login-btn">
-              Login
-            </Button>
+            <DialogTrigger>
+              <Button
+                variant={"primary"}
+                UNSAFE_className="login-btn"
+                onPress={() => {
+                  let credentials = {
+                    email: userEmail,
+                    password: userPassword,
+                  };
+                  postMethod(
+                    API_URL + "/login",
+                    JSON.stringify(credentials)
+                  ).then((data) => {
+                    console.log(data);
+                    if (data) {
+                      // save to store
+                      setSuccessLogin(true);
+                      navigate("/");
+                    } else {
+                      setSuccessLogin(false);
+                    }
+                  });
+                }}
+              >
+                Login
+              </Button>
+
+              {!successLogin ? (
+                <AlertDialog
+                  variant="confirmation"
+                  title="Login failed"
+                  primaryActionLabel="Cancel"
+                >
+                  Invalid email or password. Please try again.
+                </AlertDialog>
+              ) : (
+                <></>
+              )}
+
+            </DialogTrigger>
             <Button
               variant={"primary"}
               UNSAFE_className="login-btn"
