@@ -51,5 +51,21 @@ export async function getMethod(
   params?: string
 ): Promise<Response> {
 
-  return fetch(url).then((response) => response.json());
+  return fetch(url)
+    .then(async response => {
+      const isJson = response.headers
+        .get("content-type")
+        ?.includes("application/json");
+
+      const data = isJson && (await response.json());
+
+      if (!response.ok) {
+        const error = (data && data.message) || response.status;
+        return Promise.reject(error);
+      }
+      return data;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 }
