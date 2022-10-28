@@ -30,15 +30,15 @@ function LeftRail(props : LeftRailProps) {
     
   return (
     <View 
-      backgroundColor="gray-100" 
-      gridArea="sidebar"
+      backgroundColor="gray-400" 
       isHidden={props.isHidden}
+      flex={true}
       >
- 
       <Tabs
         orientation="vertical"
         aria-label="History of Ancient Rome"
         items={tabs}
+        flex={true}
         onSelectionChange={(key: number) => {props.setTabId(key)}}
       >
         <TabList>

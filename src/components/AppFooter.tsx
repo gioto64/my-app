@@ -2,7 +2,7 @@ import { View } from "@adobe/react-spectrum";
 
 function AppFooter() {
     return (
-      <View backgroundColor="magenta-600" gridArea="footer" />
+      <View flex={true} backgroundColor="magenta-600"/>
     );
   }
   
