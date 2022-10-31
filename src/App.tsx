@@ -5,7 +5,7 @@ import AppBody from './components/AppBody';
 import AppFooter from './components/AppFooter';
 import AppHeader from './components/AppHeader';
 import LeftRail from './components/LeftRail';
-import store from './store';
+import store from './store/snake_store';
 
 function App() {
   const [tabId, setTabId] = useState(1);

@@ -1,4 +1,4 @@
-import { DOWN, INCREASE_SNAKE, INCREMENT_SCORE, LEFT, RESET, RIGHT, SET_DIS_DIRECTION, UP } from "../actions/actions";
+import { DOWN, INCREASE_SNAKE, INCREMENT_SCORE, LEFT, RESET, RIGHT, SET_DIS_DIRECTION, UP } from "../actions/snake_actions";
 
 interface ISnakeCoord {
   x: number;

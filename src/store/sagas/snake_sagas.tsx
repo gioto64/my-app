@@ -14,7 +14,7 @@ import {
   MOVE_RIGHT,
   MOVE_UP, RIGHT,
   setDisDirection, STOP_GAME, UP
-} from "../actions/actions";
+} from "../actions/snake_actions";
 
 export function* moveSaga(params: {
   type: string;

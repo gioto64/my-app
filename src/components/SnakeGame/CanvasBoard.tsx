@@ -1,8 +1,8 @@
 import { View } from "@adobe/react-spectrum";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { increaseSnake, incrementScore, makeMove, MOVE_DOWN, MOVE_LEFT, MOVE_RIGHT, MOVE_UP, resetGame, stopGame } from "../../store/actions/actions";
-import { IGlobalState } from "../../store/reducers";
+import { increaseSnake, incrementScore, makeMove, MOVE_DOWN, MOVE_LEFT, MOVE_RIGHT, MOVE_UP, resetGame, stopGame } from "../../store/actions/snake_actions";
+import { IGlobalState } from "../../store/reducers/snake_reducers";
 import { clearBoard, drawObject, generateRandomPosition, hasSnakeCollided, IObjectBody, outOfBounds } from "./common/utilities";
 import RestartGame from "./RestartGame";
 
