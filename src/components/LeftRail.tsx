@@ -16,7 +16,7 @@ function LeftRail(props : LeftRailProps) {
   const tabs = [
     {
       id: 1,
-      name: 'Founding of Rome',
+      name: 'Snake',
     },
     {
       id: 2,

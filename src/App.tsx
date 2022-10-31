@@ -1,9 +1,11 @@
-import {Text, Button, defaultTheme, Flex, Grid, Header, Provider, View, Divider} from '@adobe/react-spectrum';
+import {Text, Button, defaultTheme, Flex, Grid, Header, View, Provider, Divider} from '@adobe/react-spectrum';
 import { useState } from 'react';
+import { Provider as ProviderRedux } from "react-redux";
 import AppBody from './components/AppBody';
 import AppFooter from './components/AppFooter';
 import AppHeader from './components/AppHeader';
 import LeftRail from './components/LeftRail';
+import store from './store/snake_store';
 
 function App() {
   const [tabId, setTabId] = useState(1);
@@ -28,28 +30,30 @@ function App() {
   }
   
   return (
-    <Provider theme={defaultTheme} flex = {true}>
-      <Grid
-        areas={layout}
-        columns={['1fr', '7fr']}
-        rows={['1fr', '15fr', '1fr']}
-        height="100vh"
-        >
-        <Flex gridArea="header" flex={true} direction="column">
-          <AppHeader toggleMenu = {toggleMenu}/>
-          <Divider />
-        </Flex>
-        <Flex gridArea="sidebar" flex={true}> 
-          <LeftRail setTabId={setTabId} isHidden={!isMenuOpen}/>
-          <Divider isHidden={!isMenuOpen} orientation="vertical"/>
-        </Flex>
-        <AppBody tabId={tabId} />
-        <Flex gridArea="footer" flex={true} direction="column">
-          <Divider />
-          <AppFooter />
-        </Flex>
-      </Grid>
-    </Provider>
+    <ProviderRedux store={store}>
+      <Provider theme={defaultTheme} flex={true}>
+        <Grid
+          areas={layout}
+          columns={['1fr', '7fr']}
+          rows={['1fr', '15fr', '1fr']}
+          height="100vh"
+          >
+          <Flex gridArea="header" flex={true} direction="column">
+            <AppHeader toggleMenu = {toggleMenu}/>
+            <Divider />
+          </Flex>
+          <Flex gridArea="sidebar" flex={true}> 
+            <LeftRail setTabId={setTabId} isHidden={!isMenuOpen}/>
+            <Divider isHidden={!isMenuOpen} orientation="vertical"/>
+          </Flex>
+          <AppBody tabId={tabId} />
+          <Flex gridArea="footer" flex={true} direction="column">
+            <Divider />
+            <AppFooter />
+          </Flex>
+        </Grid>
+      </Provider>
+    </ProviderRedux>
   );
 }
 export default App;
