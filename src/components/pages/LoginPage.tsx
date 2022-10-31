@@ -18,6 +18,7 @@ import { useState } from "react";
 import "../../App.css";
 import { postMethod } from "../crud";
 import { API_URL } from "./constants";
+import { json } from "stream/consumers";
 
 export const LoginPage = () => {
   const [userEmail, setUserEmail] = useState("");
@@ -28,7 +29,7 @@ export const LoginPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="login-background">
+      <div className="login-background">
       <Flex justifyContent="center" alignItems="center" height="90%">
         <Form
           UNSAFE_style={{
@@ -76,6 +77,7 @@ export const LoginPage = () => {
                     console.log(data);
                     if (data) {
                       // save to store
+                      localStorage.setItem("userInfo", JSON.stringify(data));
                       setSuccessLogin(true);
                       navigate("/");
                     } else {
