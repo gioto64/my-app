@@ -1,3 +1,5 @@
+import { ISnakeCoord } from "../../../store/actions/actions";
+
 export const clearBoard = (context: CanvasRenderingContext2D | null) => {
   if (context) {
     context.clearRect(0, 0, 1000, 600);
@@ -35,4 +37,25 @@ export const generateRandomPosition = (width: number, height: number) => {
     x: randomNumber(0, width),
     y: randomNumber(0, height),
   };
+};
+
+export const outOfBounds = (snakeHead: ISnakeCoord, height: number, width: number) =>
+  snakeHead.x < 0 || snakeHead.y < 0 || snakeHead.x > width || snakeHead.y > height  
+
+export const hasSnakeCollided = (
+  snake: IObjectBody[],
+  currentHeadPos: IObjectBody
+) => {
+  let flag = false;
+  snake.forEach((pos: IObjectBody, index: number) => {
+    if (
+      pos.x === currentHeadPos.x &&
+      pos.y === currentHeadPos.y &&
+      index !== 0
+    ) {
+      flag = true;
+    }
+  });
+
+  return flag;
 };
