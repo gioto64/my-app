@@ -1,5 +1,6 @@
 
 import { View } from "@adobe/react-spectrum";
+import Snake from "./SnakeGame/Snake";
 
 interface AppBodyProps {
   tabId,
@@ -10,7 +11,8 @@ function AppBody(props: AppBodyProps) {
                 props.tabId === 2 ? "orange-600" :
                 "green-600"
   return (
-    <View backgroundColor={color} gridArea="content" />
+    props.tabId === 1 ? <Snake />  
+                      : <View backgroundColor={color} gridArea="content" />
   );
 }
 
