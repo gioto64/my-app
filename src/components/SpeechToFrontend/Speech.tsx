@@ -13,9 +13,7 @@ const Speech = () => {
   const text = useSelector((state: DataGlobalState) => state.text);
   
   return (
-    <View gridArea="content">
-      <Interpreter text={text} />
-    </View>
+    <Interpreter text={text} />
   )
 }
 

@@ -3,7 +3,7 @@ import { useState } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
-import "../styles/SpeechMenu.css";
+import "./styles/SpeechMenu.css";
 import MicOffRoundedIcon from "@mui/icons-material/MicOffRounded";
 import MicRoundedIcon from "@mui/icons-material/MicRounded";
 import { MotionConfig, motion } from "framer-motion";
