@@ -7,6 +7,7 @@ import { LoginPage } from './components/pages/LoginPage';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { SignUpPage } from './components/pages/SignUpPage';
 import { Provider, defaultTheme } from '@adobe/react-spectrum';
+import { Dashboard } from './components/Dashboard';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -15,6 +16,10 @@ const root = ReactDOM.createRoot(
     {
       path: '/',
       element: <App />
+    },
+    {
+      path: '/dashboard',
+      element: <Dashboard />
     },
     {
       path: '/login',
