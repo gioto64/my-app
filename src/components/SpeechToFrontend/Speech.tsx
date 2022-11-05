@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createButton } from "./common/utils";
 import Components from "./Components";
+import CustomButton from "./micro_components/CustomButton";
 import { addComponent, removeComponent } from "./store/actions/speech_actions";
 import { DataGlobalState } from "./store/reducers/speech_reducers";
 
@@ -28,8 +29,8 @@ const Speech = () => {
 
 
   return (
-    <View gridArea="content">
-      {data.content.body.map(block => Components(block))}
+    <View gridArea="content" flex={true}>
+      <CustomButton text='test' color='green'/>
     </View>
   )
 }
