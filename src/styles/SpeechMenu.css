@@ -1,4 +1,36 @@
+
 .transcript-field {
 	border-radius: 30%;
-	
 }
+
+.mic-button {
+	border-radius: 50%;
+}
+
+.mic-button .icon {
+	width: 90%;
+	height: 90%;
+}
+
+/* Active styling */
+
+.mic-button-active {
+	background-color: #1f1c51;	
+}
+
+.mic-button-active .icon {
+	color: #8be3ff;
+}
+
+/* Inactive styling */
+
+.mic-button-inactive {
+	background-color: #8be3ff;
+}
+
+.mic-button-inactive .icon {
+	color: #1f1c51;
+}
+
+
+

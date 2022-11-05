@@ -1,17 +1,17 @@
 import {
   Button,
-  ButtonGroup,
   Flex,
-  Icon,
-  TextField,
+  TextArea,
   View,
 } from "@adobe/react-spectrum";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
 import "../styles/SpeechMenu.css";
-import { MicIcon } from "./MicIcon";
+import MicOffRoundedIcon from "@mui/icons-material/MicOffRounded";
+import MicRoundedIcon from "@mui/icons-material/MicRounded";
+
 
 export const SpeechMenu = ({ gridName, hidden }) => {
   const [words, setWords] = useState("");
@@ -23,10 +23,6 @@ export const SpeechMenu = ({ gridName, hidden }) => {
     browserSupportsSpeechRecognition,
   } = useSpeechRecognition();
 
-  //   useEffect(() => {
-  //     setWords(words.concat(transcript));
-  //   }, [transcript]);
-
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
   }
@@ -35,54 +31,54 @@ export const SpeechMenu = ({ gridName, hidden }) => {
     <Flex gridArea="speech" flex={true} justifyContent="center">
       <View backgroundColor="gray-400" isHidden={hidden} flex={true}>
         <Flex
-          flex={true}
-          direction="column"
+          columnGap={10}
+          direction="row"
           alignContent={"center"}
           justifyContent={"center"}
           height={"100%"}
         >
           <p>Microphone: {listening ? "on" : "off"}</p>
-          <ButtonGroup alignSelf="center" justifySelf="center" width={"50%"}>
-            <Button
-              variant="primary"
-              onPress={() =>
-                SpeechRecognition.startListening({
-                  continuous: true,
-                  language: "en-US",
-                })
-              }
-            >
-              Start
-            </Button>
-            <TextField
-              value={transcript}
-              onChange={setWords}
-              isReadOnly
-              alignSelf="center"
-              justifySelf="center"
-              width={"100%"}
-            />
-			<Button variant="primary" onPress={SpeechRecognition.stopListening}> Stop </Button>
-          </ButtonGroup>
+          <Button
+            UNSAFE_className={"mic-button ".concat(
+              listening ? "mic-button-active" : "mic-button-inactive"
+            )}
+            height={"size-800"}
+            width={"size-800"}
+            alignSelf="center"
+            justifySelf="center"
+            variant="primary"
+            onPress={() =>
+              listening
+                ? SpeechRecognition.stopListening()
+                : SpeechRecognition.startListening({
+                    continuous: true,
+                    language: "en-EN",
+                  })
+            }
+          >
+            {listening ? (
+              <MicOffRoundedIcon className="icon"/>
+            ) : (
+              <MicRoundedIcon className="icon" />
+            )}
+          </Button>
+          <TextArea
+            value={transcript}
+            onChange={setWords}
+            isReadOnly
+            alignSelf="center"
+            justifySelf="center"
+            flex={2}
+          />
+          <Button
+            variant="primary"
+            onPress={() => alert("teaca")}
+            alignSelf="center"
+            justifySelf="center"
+          >
+            Build
+          </Button>
         </Flex>
-		{ /*
-          Start
-        </button>
-        <button onClick={SpeechRecognition.stopListening}>Stop</button>
-        <button
-          onClick={() => {
-            resetTranscript();
-            setWords("");
-          }}
-        >
-          Reset
-        </button> */}
-        {/* <TextField
-          value={transcript}
-          isReadOnly
-		  width="80%"
-        />
-        <p>{transcript}</p> */}
       </View>
     </Flex>
   );
