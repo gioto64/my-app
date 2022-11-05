@@ -1,4 +1,4 @@
-import { ISnakeCoord } from "../../../store/actions/snake_actions";
+import { ISnakeCoord } from "../store/actions/snake_actions";
 
 export const clearBoard = (context: CanvasRenderingContext2D | null) => {
   if (context) {
