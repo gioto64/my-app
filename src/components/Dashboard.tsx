@@ -13,6 +13,7 @@ import AppHeader from "./AppHeader";
 import { SpeechMenu } from "./SpeechMenu";
 import Speech from "./SpeechToFrontend/Speech";
 import speechStore from "./SpeechToFrontend/store/speech_store";
+import { motion } from "framer-motion";
 
 export const Dashboard = () => {
   const [layout, setLayout] = useState([
@@ -26,8 +27,8 @@ export const Dashboard = () => {
   const toggleMenu = () => {
     if (isMenuOpen) {
       setLayout([
-        "header", 
-        "content", 
+        "header",
+        "content",
         "footer"
       ]);
 	  setRows(["1fr", "15fr", "1fr"]);
@@ -44,7 +45,7 @@ export const Dashboard = () => {
   };
 
   return (
-    <ProviderRedux store={speechStore}>    
+    <ProviderRedux store={speechStore}>
       <Provider theme={defaultTheme} flex={true}>
         <Grid areas={layout} rows={rows} columns={["1fr"]} height="100vh">
           <Flex gridArea="header" flex={true} direction="column">
@@ -52,7 +53,7 @@ export const Dashboard = () => {
             <Divider />
           </Flex>
           <SpeechMenu gridName="speech" hidden={!isMenuOpen} />
-            <View gridArea="content"> 
+            <View gridArea="content">
               <Speech />
             </View>
           <Flex gridArea="footer" flex={true} direction="column">
@@ -61,6 +62,6 @@ export const Dashboard = () => {
           </Flex>
         </Grid>
       </Provider>
-    </ProviderRedux>  
+    </ProviderRedux>
   );
 };
