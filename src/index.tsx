@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { SignUpPage } from './components/pages/SignUpPage';
 import { Provider, defaultTheme } from '@adobe/react-spectrum';
 import { Dashboard } from './components/Dashboard';
+import { FrontPage } from './components/pages/FrontPage';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -15,7 +16,7 @@ const root = ReactDOM.createRoot(
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <App />
+      element: <FrontPage />
     },
     {
       path: '/dashboard',
