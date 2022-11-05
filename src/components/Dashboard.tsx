@@ -6,11 +6,13 @@ import {
   Divider,
   View,
 } from "@adobe/react-spectrum";
-import { useState } from "react";
 import { Provider as ProviderRedux } from "react-redux";
+import { useState } from "react";
 import AppFooter from "./AppFooter";
 import AppHeader from "./AppHeader";
 import { SpeechMenu } from "./SpeechMenu";
+import Speech from "./SpeechToFrontend/Speech";
+import speechStore from "./SpeechToFrontend/store/speech_store";
 
 export const Dashboard = () => {
   const [layout, setLayout] = useState([
@@ -24,9 +26,10 @@ export const Dashboard = () => {
   const toggleMenu = () => {
     if (isMenuOpen) {
       setLayout([
-	 "header", 
-	  "content", 
-	  "footer"]);
+        "header", 
+        "content", 
+        "footer"
+      ]);
 	  setRows(["1fr", "15fr", "1fr"]);
     } else {
       setLayout([
@@ -41,19 +44,23 @@ export const Dashboard = () => {
   };
 
   return (
-    <Provider theme={defaultTheme} flex={true}>
-      <Grid areas={layout} rows={rows} columns={["1fr"]} height="100vh">
-        <Flex gridArea="header" flex={true} direction="column">
-          <AppHeader toggleMenu={toggleMenu} />
-          <Divider />
-        </Flex>
-    <SpeechMenu gridName="speech" hidden={!isMenuOpen} />
-        <View gridArea="content"> CONTENT BODY</View>
-        <Flex gridArea="footer" flex={true} direction="column">
-          <Divider />
-          <AppFooter />
-        </Flex>
-      </Grid>
-    </Provider>
+    <ProviderRedux store={speechStore}>    
+      <Provider theme={defaultTheme} flex={true}>
+        <Grid areas={layout} rows={rows} columns={["1fr"]} height="100vh">
+          <Flex gridArea="header" flex={true} direction="column">
+            <AppHeader toggleMenu={toggleMenu} />
+            <Divider />
+          </Flex>
+          <SpeechMenu gridName="speech" hidden={!isMenuOpen} />
+            <View gridArea="content"> 
+              <Speech />
+            </View>
+          <Flex gridArea="footer" flex={true} direction="column">
+            <Divider />
+            <AppFooter />
+          </Flex>
+        </Grid>
+      </Provider>
+    </ProviderRedux>  
   );
 };
