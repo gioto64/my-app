@@ -5,9 +5,15 @@
 
 .mic-button {
 	border-radius: 50%;
+	border: 0;
+	transition: transform .4s;
 }
 
-.mic-button .icon {
+.mic-button:hover {
+	transform: scale(1.1);
+}
+
+.icon {
 	width: 90%;
 	height: 90%;
 }
@@ -32,5 +38,17 @@
 	color: #1f1c51;
 }
 
+.square-button {
+	background-color: #8be3ff;
+	color: #1f1c51;
+	border: 0;
+	transition: transform .4s;
+}
+
+.square-button:hover {
+	background-color: #1f1c51;
+	color: #8be3ff;
+	 transform: scale(1.1);
+}
 
 
