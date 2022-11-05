@@ -10,7 +10,6 @@ import { useState } from "react";
 import { Provider as ProviderRedux } from "react-redux";
 import AppFooter from "./AppFooter";
 import AppHeader from "./AppHeader";
-import store from "..//store/snake_store";
 import { SpeechMenu } from "./SpeechMenu";
 
 export const Dashboard = () => {
@@ -42,21 +41,19 @@ export const Dashboard = () => {
   };
 
   return (
-    <ProviderRedux store={store}>
-      <Provider theme={defaultTheme} flex={true}>
-        <Grid areas={layout} rows={rows} columns={["1fr"]} height="100vh">
-          <Flex gridArea="header" flex={true} direction="column">
-            <AppHeader toggleMenu={toggleMenu} />
-            <Divider />
-          </Flex>
-			<SpeechMenu gridName="speech" hidden={!isMenuOpen} />
-          <View gridArea="content"> CONTENT BODY</View>
-          <Flex gridArea="footer" flex={true} direction="column">
-            <Divider />
-            <AppFooter />
-          </Flex>
-        </Grid>
-      </Provider>
-    </ProviderRedux>
+    <Provider theme={defaultTheme} flex={true}>
+      <Grid areas={layout} rows={rows} columns={["1fr"]} height="100vh">
+        <Flex gridArea="header" flex={true} direction="column">
+          <AppHeader toggleMenu={toggleMenu} />
+          <Divider />
+        </Flex>
+    <SpeechMenu gridName="speech" hidden={!isMenuOpen} />
+        <View gridArea="content"> CONTENT BODY</View>
+        <Flex gridArea="footer" flex={true} direction="column">
+          <Divider />
+          <AppFooter />
+        </Flex>
+      </Grid>
+    </Provider>
   );
 };
