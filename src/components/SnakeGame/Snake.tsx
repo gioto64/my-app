@@ -1,4 +1,4 @@
-import { Flex, Grid, Header, View } from "@adobe/react-spectrum";
+import { Grid, Header, View } from "@adobe/react-spectrum";
 import CanvasBoard from "./CanvasBoard";
 import Guide from "./Guide";
 import ScoreCard from "./ScoreCard";

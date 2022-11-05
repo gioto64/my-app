@@ -20,7 +20,7 @@ function LeftRail(props : LeftRailProps) {
     },
     {
       id: 2,
-      name: 'Monarchy and Republic',
+      name: 'Speech to Frontend',
     },
     { 
       id: 3, 
