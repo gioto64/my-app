@@ -11,6 +11,7 @@ import { Provider as ProviderRedux } from "react-redux";
 import AppFooter from "./AppFooter";
 import AppHeader from "./AppHeader";
 import { SpeechMenu } from "./SpeechMenu";
+import { motion } from "framer-motion";
 
 export const Dashboard = () => {
   const [layout, setLayout] = useState([
