@@ -10,7 +10,7 @@ import { Provider as ProviderRedux } from "react-redux";
 import { useState } from "react";
 import AppFooter from "./AppFooter";
 import AppHeader from "./AppHeader";
-import { SpeechMenu } from "./SpeechMenu";
+import { SpeechMenu } from "./SpeechToFrontend/SpeechMenu";
 import Speech from "./SpeechToFrontend/Speech";
 import speechStore from "./SpeechToFrontend/store/speech_store";
 import { motion } from "framer-motion";
