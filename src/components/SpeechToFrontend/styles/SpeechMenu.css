@@ -27,26 +27,26 @@
 /* Active styling */
 
 .mic-button-active {
-	background-color: #1f1c51;	
+	background-color: #d65e5e;	
 }
 
 .mic-button-active .icon {
-	color: #8be3ff;
+	color: #111117;
 }
 
 /* Inactive styling */
 
 .mic-button-inactive {
-	background-color: #8be3ff;
+	background-color: #78c6dd;
 }
 
 .mic-button-inactive .icon {
-	color: #1f1c51;
+	color: #FFE9CF;
 }
 
 .square-button {
-	background-color: #8be3ff;
-	color: #1f1c51;
+	background-color: #78c6dd;
+	color: #FFE9CF;
 	border: 0;
 	transition: transform .4s;
 }

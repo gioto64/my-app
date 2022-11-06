@@ -22,7 +22,7 @@ function AppHeader(props: AppHeaderProps) {
           <Hamburger  onToggle={() => {props.toggleMenu()}} />
         </Flex>
         <Flex justifyContent="right" alignSelf="center" gridArea="loginbutton">
-          <Button variant="cta" onPress={() => {navigate("/login")}}>Login</Button>
+          <h1 style={{marginRight: "12px"}}> CodeSpeak </h1>
         </Flex>
       </Grid>  
     </View> 

@@ -17,12 +17,12 @@ function AppFooter({gridArea, onToggle}) {
           UNSAFE_className={"square-button"}
           height={"size-500"}
           width={"size-1200"}
-          onPress={() => {onToggle()}}
+          onPress={() => {onToggle(); setMenu(!isMenuOpen)}}
           alignSelf="center"
           justifySelf="center">
          {isMenuOpen ? <KeyboardArrowDownIcon /> : <h3> Show code </h3>} 
         </ActionButton>
-        {isMenuOpen ? <CodeContainer /> : null}
+        {isMenuOpen ? <CodeContainer /> : <></>}
       </Flex>
     );
   }
