@@ -39,19 +39,19 @@ export const FrontPage = () => {
         animate={{ opacity: 1, transition: { delay: 5, duration: 1 } }}
         exit={{ opacity: 0, transition: { delay: 0, duration: 1 } }}
       > */}
-        <TypeAnimation
-          sequence={[
-            "Create innovative software products using voice commands - no matter what's your background.", 
-            () => {
-              console.log("Done typing!"); // Place optional callbacks anywhere in the array
-            },
-          ]}
-          wrapper="p"
-          cursor={true}
-          repeat={1 }
-          style={{ fontSize: "2em" }}
-        />
-        
+      <TypeAnimation
+        sequence={[
+          "Create innovative software products using voice commands - no matter what your background is.",
+          () => {
+            console.log("Done typing!"); // Place optional callbacks anywhere in the array
+          },
+        ]}
+        wrapper="p"
+        cursor={true}
+        repeat={1}
+        style={{ fontSize: "2em", color: "lightgray", fontWeight: "bold" }}
+      />
+
       {/* </motion.p> */}
       <motion.button
         style={{
@@ -90,7 +90,7 @@ export const FrontPage = () => {
           cx="100"
           cy="100"
           r="80"
-          stroke="#E65C36"
+          stroke="#d65e5e"
           variants={draw}
           custom={1}
         />
@@ -99,7 +99,7 @@ export const FrontPage = () => {
           y1="30"
           x2="360"
           y2="170"
-          stroke="#4CB884"
+          stroke="#7ad65e"
           variants={draw}
           custom={2}
         />
@@ -108,7 +108,7 @@ export const FrontPage = () => {
           y1="170"
           x2="360"
           y2="30"
-          stroke="#4CB884"
+          stroke="#7ad65e"
           variants={draw}
           custom={2.5}
         />
@@ -135,7 +135,7 @@ export const FrontPage = () => {
           y1="230"
           x2="360"
           y2="370"
-          stroke="#E65C36"
+          stroke="#d65e5e"
           custom={3}
           variants={draw}
         />
@@ -144,7 +144,7 @@ export const FrontPage = () => {
           y1="370"
           x2="360"
           y2="230"
-          stroke="#E65C36"
+          stroke="#d65e5e"
           custom={3.5}
           variants={draw}
         />
@@ -154,7 +154,7 @@ export const FrontPage = () => {
           x="410"
           y="230"
           rx="20"
-          stroke="#4CB884"
+          stroke="#7ad65e"
           custom={4}
           variants={draw}
         />
@@ -162,7 +162,7 @@ export const FrontPage = () => {
           cx="100"
           cy="500"
           r="80"
-          stroke="#4CB884"
+          stroke="#7ad65e"
           variants={draw}
           custom={3}
         />
@@ -190,7 +190,7 @@ export const FrontPage = () => {
           x="410"
           y="430"
           rx="20"
-          stroke="#E65C36"
+          stroke="#d65e5e"
           variants={draw}
           custom={5}
         />
