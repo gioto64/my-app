@@ -12,7 +12,7 @@ import { Button } from "@adobe/react-spectrum";
 const CustomButton = () => {
   return (
     <Button variant='cta' UNSAFE_style={{background: ${props.color}}}>
-      ${props.text}
+      button
     </Button>
   );
 }`;
@@ -20,7 +20,7 @@ const CustomButton = () => {
   return (
       <View>
         <Button variant='cta' UNSAFE_style={{background: `${props.color}`}}>
-          {props.text}
+          button
         </Button>
         <CodeContainer codeToPrint={codeToPrint} />
       </View>

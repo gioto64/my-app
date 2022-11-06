@@ -6,32 +6,15 @@ import Components from "./Components";
 import CustomButton from "./micro_components/CustomButton";
 import { addComponent, removeComponent } from "./store/actions/speech_actions";
 import { DataGlobalState } from "./store/reducers/speech_reducers";
+import Interpreter from "./Interpreter";
+
 
 const Speech = () => {
-  const data = useSelector((state: DataGlobalState) => state);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(addComponent(createButton({
-      name: "button 2",
-      text: "meow meow",
-    })));  
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    if (data.content.body.length === 2) {
-      dispatch(removeComponent('button 2'));
-    }
-  }, [data]);
-
-  console.log(data);
-
-
+  const text = useSelector((state: DataGlobalState) => state.text);
+  console.log(text);
+  
   return (
-    <View gridArea="content" flex={true}>
-      <CustomButton text='test' color='green'/>
-    </View>
+    <Interpreter text={text} />
   )
 }
 
