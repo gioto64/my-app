@@ -1,5 +1,7 @@
-import { Button, View } from "@adobe/react-spectrum";
-import CodeContainer from "./CodeContainer";
+import { Button } from "@adobe/react-spectrum";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { showCode } from "../store/actions/speech_actions";
 
 interface CustomButtonInterface {
     color?: string;
@@ -17,15 +19,18 @@ const CustomButton = () => {
   );
 }`;
 
-  return (
-      <View>
-        <Button variant='cta' UNSAFE_style={{background: `${props.color}`}}>
-          button
-        </Button>
-        <CodeContainer codeToPrint={codeToPrint} />
-      </View>
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(showCode(codeToPrint));
+    return () => {dispatch(showCode(''));}
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    )
+  return (
+    <Button variant='cta' UNSAFE_style={{background: `${props.color}`}}>
+      button
+    </Button>
+  )
 }
 
 export default CustomButton;

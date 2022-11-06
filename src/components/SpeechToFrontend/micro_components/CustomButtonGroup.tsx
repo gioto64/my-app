@@ -1,5 +1,7 @@
-import { Button, ButtonGroup, View } from "@adobe/react-spectrum";
-import CodeContainer from "./CodeContainer";
+import { Button, ButtonGroup } from "@adobe/react-spectrum";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { showCode } from "../store/actions/speech_actions";
 
 interface CustomButtonGroupInterface {
     color?: string;
@@ -18,16 +20,19 @@ const CustomButtonGroup = () => {
     </ButtonGroup>
   );
 }`;
+  const dispatch = useDispatch();
+    useEffect(() => {
+    dispatch(showCode(codeToPrint));
+    return () => {dispatch(showCode(''));}
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <View>
-      <ButtonGroup orientation="vertical">
-        <Button variant="secondary">No, thanks</Button>
-        <Button variant="secondary">Remind me later</Button>
-        <Button variant="primary">Rate Now</Button>
-      </ButtonGroup>
-      <CodeContainer codeToPrint={codeToPrint} />
-    </View>
+    <ButtonGroup orientation="vertical">
+      <Button variant="secondary">No, thanks</Button>
+      <Button variant="secondary">Remind me later</Button>
+      <Button variant="primary">Rate Now</Button>
+    </ButtonGroup>
   );
 }
 

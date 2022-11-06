@@ -1,7 +1,8 @@
-import { Button, Item, TabList, Tabs, View } from "@adobe/react-spectrum";
+import { Item, TabList, Tabs, View } from "@adobe/react-spectrum";
 import Hamburger from "hamburger-react";
-import { useState } from "react";
-import CodeContainer from "./CodeContainer";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { showCode } from "../store/actions/speech_actions";
 
 interface CustomSlidingMenuInterface {
     color?: string;
@@ -55,6 +56,14 @@ const CustomHamburgerButton = () => {
     </View>
   );
 }`;
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(showCode(codeToPrint));
+    return () => {console.log('mata'); dispatch(showCode(''));}
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const tabs = [
     {
       id: 1,
@@ -94,7 +103,6 @@ const CustomHamburgerButton = () => {
           </TabList>
         </Tabs>
       </View>
-      <CodeContainer codeToPrint={codeToPrint} />
     </View>
   );
 }
