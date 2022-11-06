@@ -24,26 +24,16 @@ export const SpeechMenu = ({ gridName, hidden }) => {
 
   return (
     <Flex gridArea="speech" justifyContent="center">
-      <motion.div
-        animate={{ y: 0 }}
-        initial={{ y: -100 }}
-        transition={{ duration: 2 }}
-      />
-      {/* <View
-        // UNSAFE_style={{ backgroundColor: "#E0F4F7" }}
-        isHidden={hidden}
-        flex={true}
-      > */}
       <Flex
         isHidden={hidden}
-        UNSAFE_style={{ backgroundColor: "#E0F4F7" }}
+        UNSAFE_style={{ backgroundColor: "#494949" }}
         columnGap={10}
         direction="row"
         alignContent={"center"}
         justifyContent={"center"}
         width={"100%"}
       >
-        <Button
+        <ActionButton
           UNSAFE_className={"mic-button ".concat(
             listening ? "mic-button-active" : "mic-button-inactive"
           )}
@@ -51,7 +41,6 @@ export const SpeechMenu = ({ gridName, hidden }) => {
           width={"size-1000"}
           alignSelf="center"
           justifySelf="center"
-          variant="primary"
           onPress={() =>
             listening
               ? SpeechRecognition.stopListening()
@@ -66,7 +55,7 @@ export const SpeechMenu = ({ gridName, hidden }) => {
           ) : (
             <MicRoundedIcon className="icon" />
           )}
-        </Button>
+        </ActionButton>
         <TextArea
           UNSAFE_style={{ border: 0, outline: 0 }}
           value={transcript}
