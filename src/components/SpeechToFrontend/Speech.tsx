@@ -14,7 +14,6 @@ const Speech = () => {
       ) : (
         <Interpreter text={text} />
       )}
-      {/* <Interpreter text={text} /> */}
     </View>
   );
 }
