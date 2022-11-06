@@ -13,7 +13,7 @@ const CustomButton = (props: CustomButtonInterface) => {
 import { Button } from "@adobe/react-spectrum";
 const CustomButton = () => {
   return (
-    <Button variant='cta' UNSAFE_style={{background: ${props.color}}}>
+    <Button variant='cta' width = {"size-1200"} height={"size-600"} UNSAFE_style={{background: ${props.color}}}>
       button
     </Button>
   );
@@ -34,7 +34,7 @@ const CustomButton = () => {
     <View>
       <Grid areas={["button"]} flex={true} height="100%" width="100%">
         <Flex justifyContent="center" alignSelf="center" gridArea="button">
-          <Button variant="cta" UNSAFE_style={{ background: `${props.color}` }}>
+          <Button variant="cta" top={"10px"} width = {"size-1200"} height={"size-600"} UNSAFE_style={{ background: `${props.color}` }}>
             button
           </Button>
         </Flex>
