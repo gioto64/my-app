@@ -1,4 +1,4 @@
-import { ActionButton, Button, Flex, TextArea } from "@adobe/react-spectrum";
+import { ActionButton, Flex, TextArea } from "@adobe/react-spectrum";
 import { useEffect, useState } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,

@@ -1,16 +1,24 @@
-import { ActionButton, Button, Divider, Flex, View } from "@adobe/react-spectrum";
+import { ActionButton, Divider, Flex } from "@adobe/react-spectrum";
 import { useState } from "react";
 import CodeContainer from "./SpeechToFrontend/micro_components/CodeContainer";
 import "./SpeechToFrontend/styles/SpeechMenu.css";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-
+import { DataGlobalState } from "./SpeechToFrontend/store/reducers/speech_reducers";
+import { useSelector } from "react-redux";
 
 function AppFooter({gridArea, onToggle}) {
-
+  const code = useSelector((state: DataGlobalState) => state.code);
+  
   const [isMenuOpen, setMenu] = useState(false);
 
     return (
-      <Flex gridArea={gridArea} flex={true} direction="column" gap={5} >
+      <Flex 
+        isHidden={code === ''}
+        gridArea={gridArea} 
+        flex={true} 
+        direction="column" 
+        gap={5}
+      >
         <Divider />
         <ActionButton
         
