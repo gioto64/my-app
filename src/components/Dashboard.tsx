@@ -13,11 +13,9 @@ import AppHeader from "./AppHeader";
 import { SpeechMenu } from "./SpeechToFrontend/SpeechMenu";
 import Speech from "./SpeechToFrontend/Speech";
 import speechStore from "./SpeechToFrontend/store/speech_store";
-import { motion, MotionConfig } from "framer-motion";
 
 export const Dashboard = () => {
   const [layout, setLayout] = useState(["header", "content", "footer"]);
-
   const [rows, setRows] = useState(["1fr", "15fr", "1fr"]);
   const [isMenuOpen, setMenu] = useState(false);
   const toggleMenu = () => {
