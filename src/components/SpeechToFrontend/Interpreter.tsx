@@ -7,6 +7,7 @@ import Snake from "../SnakeGame/Snake";
 import snakeStore from "../SnakeGame/store/snake_store";
 import { SpeechMenu } from "./SpeechMenu";
 
+
 interface InterpreterProps {
     text: string,
     self?: boolean,
