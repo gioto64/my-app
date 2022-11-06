@@ -9,9 +9,14 @@ const Speech = () => {
   
   return (
     <View>
-      <Interpreter text={text} />
+      {text === "" ? (
+        <h2 style={{textAlign: "center", marginTop: "10%"}}> You can begin by clicking on the burger menu and press the microphone button to speak </h2>
+      ) : (
+        <Interpreter text={text} />
+      )}
+      {/* <Interpreter text={text} /> */}
     </View>
-  )
+  );
 }
 
 export default Speech;

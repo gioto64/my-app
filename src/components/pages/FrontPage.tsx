@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import "../../index.css";
-import { Flex } from "@adobe/react-spectrum";
 import { useNavigate } from "react-router-dom";
 import { TypeAnimation } from 'react-type-animation';
 
@@ -33,17 +32,11 @@ export const FrontPage = () => {
       >
         CodeSpeak
       </motion.h1>
-      {/* <motion.p
-        style={{ fontSize: "1.5rem", color: "lightgray", fontWeight: "bold" }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, transition: { delay: 5, duration: 1 } }}
-        exit={{ opacity: 0, transition: { delay: 0, duration: 1 } }}
-      > */}
       <TypeAnimation
         sequence={[
           "Create innovative software products using voice commands - no matter what your background is.",
           () => {
-            console.log("Done typing!"); // Place optional callbacks anywhere in the array
+            console.log("Done typing!");
           },
         ]}
         wrapper="p"
@@ -52,7 +45,6 @@ export const FrontPage = () => {
         style={{ fontSize: "2em", color: "lightgray", fontWeight: "bold" }}
       />
 
-      {/* </motion.p> */}
       <motion.button
         style={{
           position: "absolute",
