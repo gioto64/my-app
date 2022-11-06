@@ -13,6 +13,7 @@ import AppHeader from "./AppHeader";
 import { SpeechMenu } from "./SpeechToFrontend/SpeechMenu";
 import Speech from "./SpeechToFrontend/Speech";
 import speechStore from "./SpeechToFrontend/store/speech_store";
+import { motion, MotionConfig } from "framer-motion";
 
 export const Dashboard = () => {
   const [layout, setLayout] = useState(["header", "content", "footer"]);

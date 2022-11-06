@@ -4,6 +4,10 @@ import CustomCheckboxList from "./micro_components/CustomCheckboxList";
 import CustomSlidingMenu from "./micro_components/CustomSlidingMenu";
 import Snake from "../SnakeGame/Snake";
 import { SpeechMenu } from "./SpeechMenu";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addNumber } from "./store/actions/speech_actions";
+import { DataGlobalState } from "./store/reducers/speech_reducers";
 
 
 interface InterpreterProps {
@@ -12,6 +16,9 @@ interface InterpreterProps {
 }
 
 const Interpreter = (props: InterpreterProps) => {
+  const dispatch = useDispatch();
+  const selection = useSelector((state: DataGlobalState) => state.selection);
+
   const isButton = props.text.toLowerCase().indexOf("button") !== -1;
   const isSlidingMenu = props.text.toLowerCase().indexOf("sliding") !== -1 && props.text.toLowerCase().indexOf("menu") !== -1;
   const isCheckboxList = props.text.toLowerCase().indexOf("list") !== -1 && props.text.toLowerCase().indexOf("checkbox") !== -1;
@@ -28,8 +35,36 @@ const Interpreter = (props: InterpreterProps) => {
     color = 'green';
   else if (isRed)
     color = 'red';
-  else if (isBlue)
+  else
     color = 'blue';
+
+  let aux = isButton || isSlidingMenu || isCheckboxList || isButtonGroup || isSnake || isSameApp;
+  let number: number = Number(aux);
+  if (isButton && !isButtonGroup && !isGreen && !isRed && !isGreen && !isBlue)
+    ++number;
+
+  console.log(number);
+
+  useEffect(() => {
+    dispatch(addNumber(number));
+    return () => {
+      dispatch(addNumber(0));
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [number]);
+
+  if (number === 2) {
+    console.log(selection);
+    if (selection === 0) {
+      return (
+        <CustomButton color={color}/>
+      )
+    } else {
+      return (
+        <CustomButtonGroup color={color}/>
+      )
+    }
+  }
 
   return (
       isSlidingMenu? <CustomSlidingMenu color={color}/>

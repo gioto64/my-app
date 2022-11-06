@@ -71,15 +71,15 @@ const CustomHamburgerButton = () => {
   const tabs = [
     {
       id: 1,
-      name: 'Snake',
+      name: 'Item 1',
     },
     {
       id: 2,
-      name: 'Speech to Frontend',
+      name: 'Item 2',
     },
     { 
       id: 3, 
-      name: 'Empire', 
+      name: 'Item 3', 
     }
   ];
 
@@ -95,7 +95,6 @@ const CustomHamburgerButton = () => {
         >
         <Tabs
           orientation="vertical"
-          aria-label="History of Ancient Rome"
           items={tabs}
         >
           <TabList>

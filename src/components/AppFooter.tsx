@@ -18,6 +18,7 @@ function AppFooter({gridArea, onToggle}) {
         flex={true} 
         direction="column" 
         gap={5}
+        UNSAFE_style={{overflow: 'auto'}}
       >
         <Divider />
         <ActionButton

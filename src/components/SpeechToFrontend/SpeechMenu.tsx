@@ -6,17 +6,20 @@ import SpeechRecognition, {
 import "./styles/SpeechMenu.css";
 import MicOffRoundedIcon from "@mui/icons-material/MicOffRounded";
 import MicRoundedIcon from "@mui/icons-material/MicRounded";
-import { addText } from "./store/actions/speech_actions";
+import { addNumber, addText, moveLeft, moveRight } from "./store/actions/speech_actions";
 import { useDispatch, useSelector } from "react-redux";
 import GetAppRoundedIcon from '@mui/icons-material/GetAppRounded';
 import { DataGlobalState } from "./store/reducers/speech_reducers";
 import { Link } from "react-router-dom";
+import { ArrowLeft, ArrowRight } from "@mui/icons-material";
 
 export const SpeechMenu = ({ gridName, hidden }) => {
   const [words, setWords] = useState("");
   const dispatch = useDispatch();
   const link = useSelector((state: DataGlobalState) => state.link);
-  
+  const number = useSelector((state: DataGlobalState) => state.number);
+  console.log(number);
+
   const {
     transcript,
     listening,
@@ -51,6 +54,14 @@ export const SpeechMenu = ({ gridName, hidden }) => {
         justifyContent={"center"}
         width={"100%"}
       >
+        <ActionButton
+          isHidden={number <= 1}
+          onPress={() => {dispatch(moveLeft())}}
+          alignSelf="center"
+          justifySelf="center"
+        >
+          <ArrowLeft />
+        </ ActionButton>
         <ActionButton
           UNSAFE_className={"mic-button ".concat(
             listening ? "mic-button-active" : "mic-button-inactive"
@@ -114,6 +125,14 @@ export const SpeechMenu = ({ gridName, hidden }) => {
             <GetAppRoundedIcon />
           </ActionButton>
         </Link>
+        <ActionButton
+          isHidden={number <= 1}
+          onPress={() => {dispatch(moveRight())}}
+          alignSelf="center"
+          justifySelf="center"
+        >
+          <ArrowRight />
+        </ ActionButton>
       </Flex>
       {/* </View> */}
     </Flex>
