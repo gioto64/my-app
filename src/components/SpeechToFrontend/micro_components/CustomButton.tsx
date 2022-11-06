@@ -34,13 +34,6 @@ const CustomButton = () => {
           <Button variant="cta" UNSAFE_style={{ background: `${props.color}` }}>
             button
           </Button>
-          <ContextualHelp variant="info">
-            {/* <Content> */}
-            <Heading width={"size-6000"}>
-              <CodeContainer />
-            </Heading>
-            {/* </Content> */}
-          </ContextualHelp>
         </Flex>
       </Grid>
     </View>

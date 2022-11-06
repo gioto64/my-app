@@ -46,7 +46,7 @@ export const Dashboard = () => {
             >
               <Speech />
             </View>
-            <AppFooter gridArea={"footer"} modifyRows={setRows} />
+            <AppFooter gridArea={"footer"} modifyRows={setRows}/>
           </Grid>
         </Provider>
       </ProviderRedux>

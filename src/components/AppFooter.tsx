@@ -33,7 +33,7 @@ function AppFooter({gridArea, modifyRows}) {
           justifySelf="center">
          {isMenuOpen ? <KeyboardArrowDownIcon /> : <h3> Show code </h3>} 
         </ActionButton>
-        {/* {isMenuOpen ? <CodeContainer /> : null} */}
+        {isMenuOpen ? <CodeContainer /> : null}
       </Flex>
     );
   }
