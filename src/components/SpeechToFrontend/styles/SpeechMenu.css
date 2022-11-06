@@ -11,6 +11,12 @@
 
 .mic-button:hover {
 	transform: scale(1.1);
+	background-color: #1f1c51;
+	 transform: scale(1.1);
+}
+
+.mic-button:hover .icon {
+	color: #8be3ff;
 }
 
 .icon {
@@ -50,5 +56,7 @@
 	color: #8be3ff;
 	 transform: scale(1.1);
 }
+
+
 
 
