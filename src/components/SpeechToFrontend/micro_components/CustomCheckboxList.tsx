@@ -1,7 +1,7 @@
 import { Item, ListView } from "@adobe/react-spectrum";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { showCode } from "../store/actions/speech_actions";
+import { setLink, showCode } from "../store/actions/speech_actions";
 
 interface CustomCheckboxListInterface {
     color?: string;
@@ -30,7 +30,11 @@ const CustomCheckboxList = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(showCode(codeToPrint));
-    return () => {dispatch(showCode(''));}
+    dispatch(setLink('/snippets/CustomCheckboxList.tsx'));
+    return () => {
+      dispatch(showCode(''));
+      dispatch(setLink(''));
+    }  
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   

@@ -1,10 +1,8 @@
-import { Provider as ProviderRedux } from "react-redux";
 import CustomButton from "./micro_components/CustomButton";
 import CustomButtonGroup from "./micro_components/CustomButtonGroup";
 import CustomCheckboxList from "./micro_components/CustomCheckboxList";
 import CustomSlidingMenu from "./micro_components/CustomSlidingMenu";
 import Snake from "../SnakeGame/Snake";
-import snakeStore from "../SnakeGame/store/snake_store";
 import { SpeechMenu } from "./SpeechMenu";
 
 
@@ -38,10 +36,7 @@ const Interpreter = (props: InterpreterProps) => {
       : isButtonGroup ? <CustomButtonGroup color={color}/>
       : isButton ? <CustomButton color={color}/>
       : isCheckboxList ? <CustomCheckboxList color={color}/>
-      : isSnake ?
-        <ProviderRedux store={snakeStore}>    
-          <Snake />
-        </ProviderRedux>
+      : isSnake ? <Snake />
       : (isSameApp && !props.self)?
         <SpeechMenu gridName={'self'} hidden={false} />
       : <></>

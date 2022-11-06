@@ -1,7 +1,7 @@
 import { Button, ButtonGroup } from "@adobe/react-spectrum";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { showCode } from "../store/actions/speech_actions";
+import { setLink, showCode } from "../store/actions/speech_actions";
 
 interface CustomButtonGroupInterface {
     color?: string;
@@ -21,9 +21,13 @@ const CustomButtonGroup = () => {
   );
 }`;
   const dispatch = useDispatch();
-    useEffect(() => {
+  useEffect(() => {
     dispatch(showCode(codeToPrint));
-    return () => {dispatch(showCode(''));}
+    dispatch(setLink('/snippets/CustomButton.tsx'));
+    return () => {
+      dispatch(showCode(''));
+      dispatch(setLink(''));
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

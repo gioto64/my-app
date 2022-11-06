@@ -1,4 +1,4 @@
-import { ActionButton, Button, Flex, TextArea, View } from "@adobe/react-spectrum";
+import { ActionButton, Button, Flex, TextArea } from "@adobe/react-spectrum";
 import { useEffect, useState } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
@@ -6,13 +6,16 @@ import SpeechRecognition, {
 import "./styles/SpeechMenu.css";
 import MicOffRoundedIcon from "@mui/icons-material/MicOffRounded";
 import MicRoundedIcon from "@mui/icons-material/MicRounded";
-import { MotionConfig, motion } from "framer-motion";
 import { addText } from "./store/actions/speech_actions";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { DataGlobalState } from "./store/reducers/speech_reducers";
+import { Link } from "react-router-dom";
+import GetAppRoundedIcon from '@mui/icons-material/GetAppRounded';
 
 export const SpeechMenu = ({ gridName, hidden }) => {
   const [words, setWords] = useState("");
   const dispatch = useDispatch();
+  const link = useSelector((state: DataGlobalState) => state.link);
 
   const {
     transcript,
@@ -91,6 +94,27 @@ export const SpeechMenu = ({ gridName, hidden }) => {
         >
           <h2> Clear </h2>
         </ActionButton>
+        <Link 
+          hidden={link === ''} 
+          to={link}
+          target="_blank" 
+          style={{
+            justifyContent: 'center', 
+            alignContent: 'center', 
+            alignSelf: 'center', 
+            justifySelf: 'center'
+          }}
+          download
+        >
+          <ActionButton 
+            height={"size-800"}
+            width={"size-800"}
+            alignSelf="center"
+            justifySelf="center"
+          >
+            <GetAppRoundedIcon />
+          </ ActionButton>
+        </Link>
       </Flex>
       {/* </View> */}
     </Flex>

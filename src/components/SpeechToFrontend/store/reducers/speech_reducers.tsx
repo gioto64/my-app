@@ -1,5 +1,5 @@
 import { BUTTON } from "../../common/utils";
-import { ADD_COMPONENT, ADD_TEXT, REMOVE_COMPONENT, SHOW_CODE } from "../actions/speech_actions";
+import { ADD_COMPONENT, ADD_TEXT, REMOVE_COMPONENT, SET_LINK, SHOW_CODE } from "../actions/speech_actions";
 
 export interface Component {
   name: string,
@@ -10,7 +10,8 @@ export interface Component {
 
 export interface DataGlobalState {
   text: string,
-  code?: string,
+  code: string,
+  link: string,
   content: {
     body: Array <Component>,
   },
@@ -19,6 +20,7 @@ export interface DataGlobalState {
 const dataGlobalState: DataGlobalState = {
   text: "",
   code: "",
+  link: "",
   content: {
     body: [
       {
@@ -32,6 +34,11 @@ const dataGlobalState: DataGlobalState = {
 
 const dataReducer = (state = dataGlobalState, action) => {
   switch (action.type) {
+    case SET_LINK:
+      return {
+        ...state,
+        link: action.payload,
+      }
     case SHOW_CODE:
       return {
         ...state,
