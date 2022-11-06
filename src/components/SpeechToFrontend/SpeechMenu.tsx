@@ -66,9 +66,10 @@ export const SpeechMenu = ({ gridName, hidden }) => {
           }
         >
           {listening ? (
-            <MicOffRoundedIcon className="icon" />
-          ) : (
             <MicRoundedIcon className="icon" />
+            ) : (
+            <MicOffRoundedIcon className="icon" />
+            
           )}
         </ActionButton>
         <TextArea

@@ -1,7 +1,8 @@
-import { Button } from "@adobe/react-spectrum";
+import { Button, ContextualHelp, Flex, Grid, Heading, View } from "@adobe/react-spectrum";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { showCode } from "../store/actions/speech_actions";
+import CodeContainer from "./CodeContainer";
 
 interface CustomButtonInterface {
     color?: string;
@@ -27,10 +28,16 @@ const CustomButton = () => {
   }, []);
 
   return (
-    <Button variant='cta' UNSAFE_style={{background: `${props.color}`}}>
-      button
-    </Button>
-  )
+    <View>
+      <Grid areas={["button"]} flex={true} height="100%" width="100%">
+        <Flex justifyContent="center" alignSelf="center" gridArea="button">
+          <Button variant="cta" UNSAFE_style={{ background: `${props.color}` }}>
+            button
+          </Button>
+        </Flex>
+      </Grid>
+    </View>
+  );
 }
 
 export default CustomButton;
