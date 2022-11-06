@@ -1,8 +1,7 @@
-import { Button, ContextualHelp, Flex, Grid, Heading, View } from "@adobe/react-spectrum";
+import { Button, Flex, Grid, View } from "@adobe/react-spectrum";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { showCode } from "../store/actions/speech_actions";
-import CodeContainer from "./CodeContainer";
+import { setLink, showCode } from "../store/actions/speech_actions";
 
 interface CustomButtonInterface {
     color?: string;
@@ -23,7 +22,11 @@ const CustomButton = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(showCode(codeToPrint));
-    return () => {dispatch(showCode(''));}
+    dispatch(setLink('/snippets/CustomButton.tsx'));
+    return () => {
+      dispatch(showCode(''));
+      dispatch(setLink(''));
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

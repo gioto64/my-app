@@ -2,7 +2,7 @@ import { Item, TabList, Tabs, View } from "@adobe/react-spectrum";
 import Hamburger from "hamburger-react";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { showCode } from "../store/actions/speech_actions";
+import { setLink, showCode } from "../store/actions/speech_actions";
 
 interface CustomSlidingMenuInterface {
     color?: string;
@@ -60,7 +60,11 @@ const CustomHamburgerButton = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(showCode(codeToPrint));
-    return () => {console.log('mata'); dispatch(showCode(''));}
+    dispatch(setLink('/snippets/CustomSlidingMenu.tsx'));
+    return () => {
+      dispatch(showCode(''));
+      dispatch(setLink(''));
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

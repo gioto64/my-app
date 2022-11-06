@@ -4,6 +4,7 @@ export const ADD_COMPONENT = "ADD_COMPONENT";
 export const REMOVE_COMPONENT = "REMOVE_COMPONENT";
 export const ADD_TEXT = "ADD_TEXT";
 export const SHOW_CODE = "SHOW_CODE";
+export const SET_LINK = "SET_LINK";
 
 export const addComponent = (component: Component) => ({
   type: ADD_COMPONENT,
@@ -20,7 +21,12 @@ export const addText = (text: string) => ({
   payload: text,
 });
 
-export const showCode = (text: string) => ({
+export const showCode = (code: string) => ({
   type: SHOW_CODE,
-  payload: text,
+  payload: code,
 });
+
+export const setLink = (link: string) => ({
+  type: SET_LINK,
+  payload: link,
+})
