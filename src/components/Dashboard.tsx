@@ -53,9 +53,9 @@ export const Dashboard = () => {
             <Divider />
           </Flex>
           <SpeechMenu gridName="speech" hidden={!isMenuOpen} />
-            <View gridArea="content">
-              <Speech />
-            </View>
+          <View gridArea="content">
+            <Speech />
+          </View>
           <Flex gridArea="footer" flex={true} direction="column">
             <Divider />
             <AppFooter />

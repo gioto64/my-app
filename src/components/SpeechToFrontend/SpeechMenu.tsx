@@ -1,5 +1,5 @@
 import { ActionButton, Button, Flex, TextArea, View } from "@adobe/react-spectrum";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SpeechRecognition, {
   useSpeechRecognition,
 } from "react-speech-recognition";
@@ -7,9 +7,12 @@ import "./styles/SpeechMenu.css";
 import MicOffRoundedIcon from "@mui/icons-material/MicOffRounded";
 import MicRoundedIcon from "@mui/icons-material/MicRounded";
 import { MotionConfig, motion } from "framer-motion";
+import { addText } from "./store/actions/speech_actions";
+import { useDispatch } from "react-redux";
 
 export const SpeechMenu = ({ gridName, hidden }) => {
   const [words, setWords] = useState("");
+  const dispatch = useDispatch();
 
   const {
     transcript,
@@ -17,6 +20,18 @@ export const SpeechMenu = ({ gridName, hidden }) => {
     resetTranscript,
     browserSupportsSpeechRecognition,
   } = useSpeechRecognition();
+
+  useEffect(() => {
+    dispatch(addText(transcript));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [transcript])
+
+  useEffect(() => {
+    if (hidden && listening) {
+      SpeechRecognition.stopListening();
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hidden])
 
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
@@ -80,11 +95,11 @@ export const SpeechMenu = ({ gridName, hidden }) => {
           UNSAFE_className={"square-button"}
           height={"size-800"}
           width={"size-1200"}
-          onPress={() => alert("teaca")}
+          onPress={() => resetTranscript()}
           alignSelf="center"
           justifySelf="center"
         >
-          <h2> Build </h2>
+          <h2> Clear </h2>
         </ActionButton>
       </Flex>
       {/* </View> */}

@@ -11,6 +11,7 @@ import Interpreter from "./Interpreter";
 
 const Speech = () => {
   const text = useSelector((state: DataGlobalState) => state.text);
+  console.log(text);
   
   return (
     <Interpreter text={text} />
