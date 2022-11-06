@@ -5,20 +5,9 @@ import "./SpeechToFrontend/styles/SpeechMenu.css";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 
-function AppFooter({gridArea, modifyRows}) {
+function AppFooter({gridArea, onToggle}) {
 
   const [isMenuOpen, setMenu] = useState(false);
-
-  const toggleMenu = () => {
-    if (isMenuOpen) {
-      modifyRows(["1fr", "15fr", "1fr"]);
-      
-    }
-    else {
-      modifyRows(["1fr", "15fr", "5fr"]);
-    }
-    setMenu(!isMenuOpen);
-  }
 
     return (
       <Flex gridArea={gridArea} flex={true} direction="column" gap={5} >
@@ -28,7 +17,7 @@ function AppFooter({gridArea, modifyRows}) {
           UNSAFE_className={"square-button"}
           height={"size-500"}
           width={"size-1200"}
-          onPress={() => {toggleMenu()}}
+          onPress={() => {onToggle()}}
           alignSelf="center"
           justifySelf="center">
          {isMenuOpen ? <KeyboardArrowDownIcon /> : <h3> Show code </h3>} 

@@ -46,7 +46,7 @@ function App() {
         <AppBody tabId={tabId} />
         <Flex gridArea="footer" flex={true} direction="column">
           <Divider />
-          <AppFooter />
+          <AppFooter onToggle={toggleMenu}/>
         </Flex>
       </Grid>
     </Provider>

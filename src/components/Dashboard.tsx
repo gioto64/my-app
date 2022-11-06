@@ -23,13 +23,31 @@ export const Dashboard = () => {
   const toggleMenu = () => {
     if (isMenuOpen) {
       setLayout(["header", "content", "footer"]);
-      setRows(["1fr", "15fr", "1fr"]);
+      if (rows[3] === '1fr')
+        setRows(["1fr", "15fr", "1fr"]);
+      else
+        setRows(["1fr", "11fr", "5fr"]);
     } else {
       setLayout(["header", "speech", "content", "footer"]);
-      setRows(["1fr", "3fr", "12fr", "1fr"]);
+      if (rows[2] === '1fr')
+        setRows(["1fr", "3fr", "12fr", "1fr"]);
+      else
+        setRows(["1fr", "3fr", "8fr", "5fr"]);
     }
     setMenu(!isMenuOpen);
   };
+
+  const toggleFooter = () => {
+    if (rows.length === 3 && rows[2] === '1fr') {
+      setRows(["1fr", "11fr", "5fr"]);
+    } else if (rows.length === 3) {
+      setRows(["1fr", "15fr", "1fr"]);
+    } else if (rows.length === 4 && rows[3] === '1fr') {
+      setRows(["1fr", "3fr", "8fr", "5fr"]);
+    } else {
+      setRows(["1fr", "3fr", "12fr", "1fr"]);
+    }
+  }
 
   return (
       <ProviderRedux store={speechStore}>
@@ -46,7 +64,7 @@ export const Dashboard = () => {
             >
               <Speech />
             </View>
-            <AppFooter gridArea={"footer"} modifyRows={setRows}/>
+            <AppFooter gridArea={"footer"} onToggle={toggleFooter}/>
           </Grid>
         </Provider>
       </ProviderRedux>
