@@ -1,4 +1,7 @@
-import { Button, Content, ContextualHelp, Flex, Grid, Heading, TextField, View } from "@adobe/react-spectrum";
+import { Button, ContextualHelp, Flex, Grid, Heading, View } from "@adobe/react-spectrum";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { showCode } from "../store/actions/speech_actions";
 import CodeContainer from "./CodeContainer";
 
 interface CustomButtonInterface {
@@ -17,6 +20,13 @@ const CustomButton = () => {
   );
 }`;
 
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(showCode(codeToPrint));
+    return () => {dispatch(showCode(''));}
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <View>
       <Grid areas={["button"]} flex={true} height="100%" width="100%">
@@ -27,7 +37,7 @@ const CustomButton = () => {
           <ContextualHelp variant="info">
             {/* <Content> */}
             <Heading width={"size-6000"}>
-              <CodeContainer codeToPrint={codeToPrint} />
+              <CodeContainer />
             </Heading>
             {/* </Content> */}
           </ContextualHelp>
